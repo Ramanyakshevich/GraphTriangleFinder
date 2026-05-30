@@ -248,7 +248,9 @@ class TriangleFinderApp(ctk.CTk):
 
         self.txt_edges.delete("1.0", ctk.END)
 
-        G = nx.gnp_random_graph(n, p=0.4)
+        G = nx.gnp_random_graph(n, p=0.5)
+        while not nx.is_connected(G):
+            G = nx.gnp_random_graph(n, p=0.5)
 
         edges_text = ""
         for u, v in G.edges():
